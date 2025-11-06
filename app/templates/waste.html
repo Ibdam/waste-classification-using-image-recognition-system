@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Waste Classification Demo</title>
+    <link rel="stylesheet" href="../static/waste.css">
+</head>
+<body>
+    <div class="container">
+        <h1>♻️ Waste Type Classifier</h1>
+        <h5>(Image recognition system to classify waste into cardboard, glass, metal, paper,plastic and trash)</h5>
+        <div class="upload-box">
+            <form action="/predict" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <br>
+                <button type="submit">Classify Image</button>
+            </form>
+
+            {% if image_path %}
+                <div class="image-section">
+                    <img src="{{ image_path }}" alt="Uploaded Image">
+                </div>
+            {% endif %}
+
+            {% if prediction %}
+                <div class="result">
+                    <strong>Prediction:</strong> {{ prediction }} <br>
+                    <strong>Confidence:</strong> {{ confidence }}%
+                </div>
+            {% endif %}
+        </div>
+
+        <footer>
+            <p>Developed by <strong>Damilola Ibrahim Olowomojuore</strong> | Powered by <a href= 'https://tech.seaprime.com.ng/' style="color:#2d3436">Seaprime Technology</a></p>
+        </footer>
+    </div>
+</body>
+</html>
